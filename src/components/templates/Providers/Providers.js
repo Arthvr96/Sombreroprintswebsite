@@ -1,15 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'themes/GlobalStyles';
 import { theme } from 'themes/theme';
 
-const Providers = () => {
+const Providers = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <h2>HelloWorld</h2>
+      {children}
     </ThemeProvider>
   );
 };
 
 export default Providers;
+
+Providers.propTypes = {
+  children: PropTypes.node,
+};
