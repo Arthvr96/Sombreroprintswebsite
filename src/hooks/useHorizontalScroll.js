@@ -2,18 +2,18 @@ import { useEffect, useState, useContext } from 'react';
 import { GlobalStateContext } from 'providers/GlobalState/GlobalState';
 import { useWindowSize } from './useWindowSize';
 
-export const useVerticalScrollOne = () => {
-  const { scrollPosY } = useContext(GlobalStateContext);
+export const useHorizontalScroll = () => {
+  const { scrollPosX } = useContext(GlobalStateContext);
   const [scrollBy, setScrollBy] = useState(0);
-  const { height } = useWindowSize();
+  const { width } = useWindowSize();
 
   useEffect(() => {
-    if (scrollPosY === 0) {
+    if (scrollPosX === 0) {
       setScrollBy(0);
-    } else if (scrollPosY === 1) {
-      setScrollBy(-height);
+    } else if (scrollPosX === 1) {
+      setScrollBy(-width);
     }
-  }, [scrollPosY]);
+  }, [scrollPosX]);
 
   return scrollBy;
 };

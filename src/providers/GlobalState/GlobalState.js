@@ -1,13 +1,19 @@
 import React, { useState, createContext } from 'react';
 import PropTypes from 'prop-types';
 
-export const GlobalStateContext = createContext({ scrollPos: '', setScrollPos: () => {} });
+export const GlobalStateContext = createContext({
+  scrollPosY: '',
+  setScrollPosY: () => {},
+  scrollPosX: '',
+  setScrollPosX: () => {},
+});
 
 const GlobalState = ({ children }) => {
-  const [scrollPos, setScrollPos] = useState(0);
+  const [scrollPosY, setScrollPosY] = useState(0);
+  const [scrollPosX, setScrollPosX] = useState(0);
 
   return (
-    <GlobalStateContext.Provider value={{ scrollPos, setScrollPos }}>
+    <GlobalStateContext.Provider value={{ scrollPosY, setScrollPosY, scrollPosX, setScrollPosX }}>
       {children}
     </GlobalStateContext.Provider>
   );

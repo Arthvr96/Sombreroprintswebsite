@@ -7,6 +7,7 @@ export const ScrollSection = styled.div`
   flex-direction: column;
   width: fit-content;
   height: fit-content;
-  transform: ${({ scrollBy }) => `translate(0px, ${scrollBy}px)`};
+  transform: ${({ horizontalScroll, scrollBy }) =>
+    `translate(${horizontalScroll}px, ${scrollBy}px)`};
   transition: transform 0.4s ease-in;
 `;

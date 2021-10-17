@@ -3,15 +3,15 @@ import { GlobalStateContext } from 'providers/GlobalState/GlobalState';
 import { useWindowSize } from './useWindowSize';
 
 export const useVerticalScrollTwo = () => {
-  const { scrollPos } = useContext(GlobalStateContext);
+  const { scrollPosY } = useContext(GlobalStateContext);
   const { height } = useWindowSize();
   const [scrollBy, setScrollBy] = useState(-height);
 
   useEffect(() => {
-    if (scrollPos !== 0) {
-      setScrollBy(scrollPos * -height);
+    if (scrollPosY !== 0) {
+      setScrollBy(scrollPosY * -height);
     }
-  }, [scrollPos]);
+  }, [scrollPosY]);
 
   return scrollBy;
 };
