@@ -11,8 +11,9 @@ const ScrollTemplate = ({ children }) => {
   const deltaMobileScrollVertical = useMobileScrollVertical();
   const deltaMobileScrollHorizontal = useMobileScrollHorizontal();
   const deltaWheelScroll = useWheelScroll();
-  const DEADZONE_Y = 50;
   const DEADZONE_X = 100;
+  const DEADZONE_Y = 50;
+  const DEADZONE_Y_WHEEL = 0.15;
   const numberOfViews = 7;
 
   useEffect(() => {
@@ -30,6 +31,14 @@ const ScrollTemplate = ({ children }) => {
       setScrollPosX(0);
     }
   }, [deltaMobileScrollHorizontal]);
+
+  useEffect(() => {
+    if (deltaWheelScroll > DEADZONE_Y_WHEEL && scrollPosY < numberOfViews) {
+      setScrollPosY(scrollPosY + 1);
+    } else if (deltaWheelScroll < -DEADZONE_Y_WHEEL && scrollPosY !== 0) {
+      setScrollPosY(scrollPosY - 1);
+    }
+  }, [deltaWheelScroll]);
 
   return (
     <>
