@@ -1,25 +1,22 @@
 import React from 'react';
 import Providers from 'components/templates/Providers/Providers';
 import ScrollTemplate from 'components/templates/ScrollTemplate/ScrollTemplate';
-import HeroTesting from 'components/organisms/TestingComponents/HeroTesting';
-import { ScrollSection } from 'components/templates/ScrollSection/ScrollSection';
-import ProductsView from 'components/views/ProductsView/ProductsView';
+import ScrollSectionTemplate from 'components/templates/ScrollSectionTemplate/ScrollSectionTemplate';
+import HeroesView from '../HeroesView/HeroesView';
+import ProductsView from '../ProductsView/ProductsView';
+import OtherViews from '../OtherViews/OtherViews';
 
 const Root = () => {
   return (
     <Providers>
       <ScrollTemplate>
-        <ScrollSection>
-          <HeroTesting bgColor="red" name="Hero1" />
-          <HeroTesting bgColor="green" name="Hero2" />
-        </ScrollSection>
-        <ScrollSection>
+        <ScrollSectionTemplate isFirst>
+          <HeroesView />
+        </ScrollSectionTemplate>
+        <ScrollSectionTemplate>
           <ProductsView />
-        </ScrollSection>
-        <ScrollSection isColumns>
-          <HeroTesting bgColor="purple" name="Other1" />
-          <HeroTesting bgColor="purple" name="Other2" />
-        </ScrollSection>
+          <OtherViews />
+        </ScrollSectionTemplate>
       </ScrollTemplate>
     </Providers>
   );
