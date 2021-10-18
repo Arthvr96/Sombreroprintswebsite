@@ -14,7 +14,7 @@ const ScrollTemplate = ({ children }) => {
   const DEADZONE_X = 100;
   const DEADZONE_Y = 50;
   const DEADZONE_Y_WHEEL = 0.15;
-  const numberOfViews = 7;
+  const numberOfViews = 8;
 
   useEffect(() => {
     if (deltaMobileScrollVertical > DEADZONE_Y && scrollPosY < numberOfViews) {

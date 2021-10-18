@@ -4,7 +4,7 @@ import { useWindowSize } from 'hooks/useWindowSize';
 import { Wrapper } from './ViewTemplate.style';
 
 const ViewTemplate = ({ children }) => {
-  return <Wrapper size={useWindowSize()}>{children}</Wrapper>;
+  return <Wrapper windowSize={useWindowSize()}>{children}</Wrapper>;
 };
 
 export default ViewTemplate;

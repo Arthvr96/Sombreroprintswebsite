@@ -2,6 +2,7 @@ import React from 'react';
 import Providers from 'components/templates/Providers/Providers';
 import ScrollTemplate from 'components/templates/ScrollTemplate/ScrollTemplate';
 import ScrollSectionTemplate from 'components/templates/ScrollSectionTemplate/ScrollSectionTemplate';
+import Footer from 'components/views/Footer/Footer';
 import HeroesView from '../HeroesView/HeroesView';
 import ProductsView from '../ProductsView/ProductsView';
 import OtherViews from '../OtherViews/OtherViews';
@@ -17,6 +18,7 @@ const Root = () => {
           <ProductsView />
           <OtherViews />
         </ScrollSectionTemplate>
+        <Footer />
       </ScrollTemplate>
     </Providers>
   );

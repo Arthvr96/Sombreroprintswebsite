@@ -4,6 +4,8 @@ export const theme = {
     black: '#000000',
     primary: '#2C2F37',
     secondary: '#E61E62',
+    textPrimary: '#FFFFFF',
+    textSecondary: '#000000',
   },
   fontSize: {
     xl: '3.2rem',

@@ -4,6 +4,6 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: ${({ size }) => size.width}px;
-  height: ${({ size }) => size.height}px;
+  width: ${({ windowSize }) => windowSize.width}px;
+  height: ${({ windowSize }) => windowSize.height}px;
 `;
