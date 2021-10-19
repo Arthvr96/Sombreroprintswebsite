@@ -1,12 +1,14 @@
 import React from 'react';
-import HeroTesting from 'components/organisms/HeroTesting/HeroTesting';
+import Hero from 'components/organisms/Hero/Hero';
+import { heroData } from 'backend/cmsData';
 import { Wrapper } from './HeroesView.style';
 
 const HeroesView = () => {
   return (
     <Wrapper>
-      <HeroTesting bgColor="red" name="Hero1" />
-      <HeroTesting bgColor="green" name="Hero2" />
+      {heroData.map((heroInfo) => (
+        <Hero cmsData={heroInfo} key={heroInfo.name} />
+      ))}
     </Wrapper>
   );
 };
