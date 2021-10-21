@@ -13,10 +13,10 @@ const Root = () => {
     <Providers>
       <ScrollTemplate>
         <Navigation />
-        <ScrollSectionTemplate isFirst>
+        <ScrollSectionTemplate layerNumber={1}>
           <HeroesView />
         </ScrollSectionTemplate>
-        <ScrollSectionTemplate>
+        <ScrollSectionTemplate layerNumber={2}>
           <ProductsView />
           <OtherViews />
         </ScrollSectionTemplate>

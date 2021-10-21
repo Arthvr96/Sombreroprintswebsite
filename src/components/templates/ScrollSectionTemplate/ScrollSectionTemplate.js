@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { useVerticalScrollOne } from 'hooks/useVerticalScrollOne';
-import { useVerticalScrollTwo } from 'hooks/useVerticalScrollTwo';
-import { useHorizontalScroll } from 'hooks/useHorizontalScroll';
+import { ScrollStateContext } from 'providers/ScrollState/ScrollState';
 import { ScrollSection } from './ScrollSectionTemplate.style';
 
-const ScrollSectionTemplate = ({ children, isFirst }) => {
-  const scrollByOne = useVerticalScrollOne();
-  const scrollByTwo = useVerticalScrollTwo();
-  const scrollByHorizontal = useHorizontalScroll();
+const ScrollSectionTemplate = ({ children, layerNumber }) => {
+  const { layerOneShiftValueY, layerTwoShiftValueY, shiftValueX } = useContext(ScrollStateContext);
 
   return (
     <ScrollSection
-      isFirst={isFirst}
-      scrollBy={isFirst ? scrollByOne : scrollByTwo}
-      horizontalScroll={scrollByHorizontal}
+      zIndex={layerNumber === 1 ? '200' : '100'}
+      shiftValueY={layerNumber === 1 ? layerOneShiftValueY : layerTwoShiftValueY}
+      shiftValueX={shiftValueX}
     >
       {children}
     </ScrollSection>
@@ -25,5 +21,5 @@ export default ScrollSectionTemplate;
 
 ScrollSectionTemplate.propTypes = {
   children: PropTypes.node,
-  isFirst: PropTypes.bool,
+  layerNumber: PropTypes.number,
 };

@@ -4,6 +4,7 @@ import SEO from 'components/organisms/SEO/SEO';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'themes/GlobalStyles';
 import GlobalState from 'providers/GlobalState/GlobalState';
+import ScrollState from 'providers/ScrollState/ScrollState';
 import { theme } from 'themes/theme';
 
 const Providers = ({ children }) => {
@@ -11,7 +12,9 @@ const Providers = ({ children }) => {
     <SEO>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <GlobalState>{children}</GlobalState>
+        <GlobalState>
+          <ScrollState>{children}</ScrollState>
+        </GlobalState>
       </ThemeProvider>
     </SEO>
   );
