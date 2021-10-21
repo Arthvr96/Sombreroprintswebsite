@@ -6,14 +6,30 @@ export const GlobalStateContext = createContext({
   setScrollPosY: () => {},
   scrollPosX: '',
   setScrollPosX: () => {},
+  isOpenHamburger: '',
+  toggleHamburger: () => {},
 });
 
 const GlobalState = ({ children }) => {
   const [scrollPosY, setScrollPosY] = useState(0);
   const [scrollPosX, setScrollPosX] = useState(0);
+  const [isOpenHamburger, setIsOpenHamburger] = useState(false);
+
+  const toggleHamburger = () => {
+    setIsOpenHamburger(!isOpenHamburger);
+  };
 
   return (
-    <GlobalStateContext.Provider value={{ scrollPosY, setScrollPosY, scrollPosX, setScrollPosX }}>
+    <GlobalStateContext.Provider
+      value={{
+        scrollPosY,
+        setScrollPosY,
+        scrollPosX,
+        setScrollPosX,
+        isOpenHamburger,
+        toggleHamburger,
+      }}
+    >
       {children}
     </GlobalStateContext.Provider>
   );

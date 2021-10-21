@@ -1,45 +1,20 @@
-import styled, { css } from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Button } from './HamburgerButton.styles';
 
-const mixInHamburgerLines = css`
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 0.2rem;
-  background: ${({ theme }) => theme.colors.white};
-`;
+const HamburgerButton = ({ onClick, isOpen }) => {
+  return (
+    <Button onClick={onClick} isOpen={isOpen}>
+      <div>
+        <span />
+      </div>
+    </Button>
+  );
+};
 
-export const HamburgerButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  background: transparent;
-  border: 0;
+export default HamburgerButton;
 
-  div {
-    display: flex;
-    align-items: center;
-    width: 2rem;
-    height: 2rem;
-    background: transparent;
-
-    span {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 0.2rem;
-      background: ${({ theme }) => theme.colors.white};
-
-      &::before {
-        top: -6px;
-        ${mixInHamburgerLines}
-      }
-      &::after {
-        bottom: -6px;
-        ${mixInHamburgerLines}
-      }
-    }
-  }
-`;
+HamburgerButton.propTypes = {
+  onClick: PropTypes.func,
+  isOpen: PropTypes.bool,
+};

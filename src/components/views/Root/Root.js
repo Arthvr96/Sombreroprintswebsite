@@ -4,9 +4,9 @@ import ScrollTemplate from 'components/templates/ScrollTemplate/ScrollTemplate';
 import ScrollSectionTemplate from 'components/templates/ScrollSectionTemplate/ScrollSectionTemplate';
 import Navigation from 'components/organisms/Navigation/Navigation';
 import Footer from 'components/views/Footer/Footer';
-import HeroesView from '../HeroesView/HeroesView';
-import ProductsView from '../ProductsView/ProductsView';
-import OtherViews from '../OtherViews/OtherViews';
+import HeroesView from 'components/views/HeroesView/HeroesView';
+import ProductsView from 'components/views/ProductsView/ProductsView';
+import OtherViews from 'components/views/OtherViews/OtherViews';
 
 const Root = () => {
   return (
