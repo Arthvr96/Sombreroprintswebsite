@@ -54,7 +54,7 @@ const ScrollState = ({ children }) => {
       if (scrollPositionY === 0) {
         setLayerOneShiftValueY(-height);
       }
-      if (target >= 5) {
+      if (target >= numberOfStyles + 1) {
         setShiftValueX(-width / 2);
       }
       setScrollPositionY(target);
@@ -62,7 +62,7 @@ const ScrollState = ({ children }) => {
       if (target === 0) {
         setLayerOneShiftValueY(0);
       }
-      if (target < 5) {
+      if (target < numberOfStyles + 1) {
         setShiftValueX(scrollPositionX * -width);
       }
       setScrollPositionY(target);
