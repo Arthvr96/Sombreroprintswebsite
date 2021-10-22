@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { GlobalStateContext } from 'providers/GlobalState/GlobalState';
 import { ScrollStateContext } from 'providers/ScrollState/ScrollState';
 import { useMobileScrollVertical } from 'hooks/useMobileScrollVertical';
 import { useMobileScrollHorizontal } from 'hooks/useMobileScrollHorizontal';
@@ -13,6 +14,7 @@ const DEADZONES = {
 };
 
 const ScrollTemplate = ({ children }) => {
+  const { isOpenHamburger } = useContext(GlobalStateContext);
   const { updateScrollPositionY, updateScrollPositionX } = useContext(ScrollStateContext);
   const deltaMobileScrollVertical = useMobileScrollVertical();
   const deltaMobileScrollHorizontal = useMobileScrollHorizontal();
@@ -20,17 +22,23 @@ const ScrollTemplate = ({ children }) => {
 
   // Trigger update state of vertical scroll for mobile.
   useEffect(() => {
-    updateScrollPositionY(deltaMobileScrollVertical, DEADZONES.Y_MOBILE);
+    if (!isOpenHamburger) {
+      updateScrollPositionY(deltaMobileScrollVertical, DEADZONES.Y_MOBILE);
+    }
   }, [deltaMobileScrollVertical]);
 
   // Trigger update state of vertical scroll for desktop.
   useEffect(() => {
-    updateScrollPositionY(deltaWheelScroll, DEADZONES.Y_WHEEL);
+    if (!isOpenHamburger) {
+      updateScrollPositionY(deltaWheelScroll, DEADZONES.Y_WHEEL);
+    }
   }, [deltaMobileScrollVertical]);
 
   // Trigger update state of horizontal scroll for mobile.
   useEffect(() => {
-    updateScrollPositionX(deltaMobileScrollHorizontal, DEADZONES.X_MOBILE);
+    if (!isOpenHamburger) {
+      updateScrollPositionX(deltaMobileScrollHorizontal, DEADZONES.X_MOBILE);
+    }
   }, [deltaMobileScrollHorizontal]);
 
   return (

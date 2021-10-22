@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   height: 100%;
   flex-direction: column;
   align-items: center;
+  padding-top: 4rem;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.textPrimary};
 

@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { useWindowSize } from 'hooks/useWindowSize';
+import { useNumberViews } from 'hooks/useNumberViews';
 import PropTypes from 'prop-types';
 
 export const ScrollStateContext = createContext({
@@ -8,13 +9,14 @@ export const ScrollStateContext = createContext({
   layerOneShiftValueY: '',
   layerTwoShiftValueY: '',
   shiftValueX: '',
+  scrollPositionY: '',
+  handleScrollNextPrev: () => {},
+  handleScrollToSection: () => {},
 });
-
-const NUMBER_OF_VIEWS = 8;
-const NUMBER_OF_STYLES = 4;
 
 const ScrollState = ({ children }) => {
   const { width, height } = useWindowSize();
+  const { totalNumberOfViews, numberOfStyles } = useNumberViews();
   const [scrollPositionY, setScrollPositionY] = useState(0);
   const [scrollPositionX, setScrollPositionX] = useState(0);
   const [layerOneShiftValueY, setLayerOneShiftValueY] = useState(0);
@@ -22,7 +24,7 @@ const ScrollState = ({ children }) => {
   const [shiftValueX, setShiftValueX] = useState(0);
 
   const updateScrollPositionY = (delta, DEADZONE) => {
-    if (delta > DEADZONE && scrollPositionY <= NUMBER_OF_VIEWS - 1) {
+    if (delta > DEADZONE && scrollPositionY <= totalNumberOfViews - 1) {
       setScrollPositionY(scrollPositionY + 1);
     } else if (delta < -DEADZONE && scrollPositionY > 0) {
       setScrollPositionY(scrollPositionY - 1);
@@ -30,11 +32,46 @@ const ScrollState = ({ children }) => {
   };
 
   const updateScrollPositionX = (delta, DEADZONE) => {
-    if (scrollPositionY < NUMBER_OF_STYLES + 1) {
+    if (scrollPositionY < numberOfStyles + 1) {
       if (delta > DEADZONE && scrollPositionX !== 1) {
         setScrollPositionX(1);
       } else if (delta < -DEADZONE && scrollPositionX !== 0) {
         setScrollPositionX(0);
+      }
+    }
+  };
+
+  const handleScrollNextPrev = (direction) => {
+    if (direction === 1) {
+      updateScrollPositionY(1, 0);
+    } else if (direction === -1) {
+      updateScrollPositionY(-1, 0);
+    }
+  };
+
+  const handleScrollToSection = ({ target, switchSide }) => {
+    if (target > scrollPositionY) {
+      if (scrollPositionY === 0) {
+        setLayerOneShiftValueY(-height);
+      }
+      if (target >= 5) {
+        setShiftValueX(-width / 2);
+      }
+      setScrollPositionY(target);
+    } else if (target < scrollPositionY) {
+      if (target === 0) {
+        setLayerOneShiftValueY(0);
+      }
+      if (target < 5) {
+        setShiftValueX(scrollPositionX * -width);
+      }
+      setScrollPositionY(target);
+    }
+    if (switchSide && switchSide - 1 !== scrollPositionX) {
+      if (scrollPositionX === 0) {
+        updateScrollPositionX(1, 0);
+      } else {
+        updateScrollPositionX(-1, 0);
       }
     }
   };
@@ -59,11 +96,11 @@ const ScrollState = ({ children }) => {
 
   // Triger update value of horizontal shift for section with a single counts of views.
   useEffect(() => {
-    if (scrollPositionY > NUMBER_OF_STYLES) {
+    if (scrollPositionY > numberOfStyles) {
       setShiftValueX(-width / 2);
     }
-    if (scrollPositionY === NUMBER_OF_STYLES) {
-      setShiftValueX(-width * scrollPositionX);
+    if (scrollPositionY === numberOfStyles) {
+      setShiftValueX(scrollPositionX * -width);
     }
   }, [scrollPositionY]);
 
@@ -75,6 +112,9 @@ const ScrollState = ({ children }) => {
         layerOneShiftValueY,
         layerTwoShiftValueY,
         shiftValueX,
+        scrollPositionY,
+        handleScrollToSection,
+        handleScrollNextPrev,
       }}
     >
       {children}

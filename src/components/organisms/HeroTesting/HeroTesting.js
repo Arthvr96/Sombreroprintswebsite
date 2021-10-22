@@ -9,6 +9,7 @@ const HeroWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  padding-top: 4rem;
   background-color: ${({ bgColor }) => bgColor};
   color: #fff;
 

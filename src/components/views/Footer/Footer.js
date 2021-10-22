@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ViewTemplate from 'components/templates/ViewTemplate/ViewTemplate';
 import styled from 'styled-components';
-import { GlobalStateContext } from 'providers/GlobalState/GlobalState';
+import { ScrollStateContext } from 'providers/ScrollState/ScrollState';
 
 const FooterWrapper = styled.div`
   position: fixed;
@@ -18,11 +18,11 @@ const Wrapper = styled.div`
 `;
 
 const Footer = () => {
-  const { scrollPosY } = useContext(GlobalStateContext);
+  const { scrollPositionY } = useContext(ScrollStateContext);
   return (
     <FooterWrapper>
       <ViewTemplate>
-        <Wrapper isVisible={scrollPosY > 6}>
+        <Wrapper isVisible={scrollPositionY > 6}>
           <h2>Footer</h2>
         </Wrapper>
       </ViewTemplate>

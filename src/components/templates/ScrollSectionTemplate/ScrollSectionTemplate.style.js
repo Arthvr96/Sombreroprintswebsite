@@ -8,5 +8,6 @@ export const ScrollSection = styled.div`
   width: fit-content;
   height: fit-content;
   transform: ${({ shiftValueX, shiftValueY }) => `translate(${shiftValueX}px, ${shiftValueY}px)`};
-  transition: transform 0.4s ease-in;
+  transition: transform 0.3s ease-in;
+  transition: ${({ slideTime }) => `transform ${slideTime}s ease-in`};
 `;

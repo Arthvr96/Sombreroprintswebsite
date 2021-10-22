@@ -6,11 +6,15 @@ export const Button = styled.button`
   position: relative;
   width: ${({ isContent }) => (isContent ? 'fit-content' : '2.1rem')};
   height: ${({ isContent }) => (isContent ? 'fit-content' : '2.1rem')};
-  padding: 1.4rem;
-  padding-right: ${({ isContent, isArrowLeftSide }) =>
-    isContent && !isArrowLeftSide ? '3.9rem' : '1.4rem'};
-  padding-left: ${({ isContent, isArrowLeftSide }) =>
-    isContent && isArrowLeftSide ? '3.9rem' : '1.4rem'};
+  padding: ${({ isContent, isArrowLeftSide }) => {
+    if (isContent) {
+      if (isArrowLeftSide) {
+        return '1.4rem 1.4rem 1.4rem 3.9rem';
+      }
+      return '1.4rem 3.9rem 1.4rem 1.4rem';
+    }
+    return '1.8rem';
+  }};
   background-color: ${({ isReverseColors, theme }) =>
     isReverseColors ? theme.colors.white : theme.colors.black};
   border: 1px solid
