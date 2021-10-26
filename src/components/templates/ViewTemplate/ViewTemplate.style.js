@@ -6,4 +6,5 @@ export const Wrapper = styled.div`
   align-items: center;
   width: ${({ windowSize }) => windowSize.width}px;
   height: ${({ windowSize }) => windowSize.height}px;
+  padding-top: 4rem;
 `;

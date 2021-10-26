@@ -3,7 +3,7 @@ import { Button } from './CartButton.style';
 
 const CartButton = () => {
   return (
-    <Button>
+    <Button aria-label="Cart Button">
       <div />
     </Button>
   );

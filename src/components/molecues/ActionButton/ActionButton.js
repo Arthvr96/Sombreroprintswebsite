@@ -2,7 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from './ActionButton.style';
 
-const ActionButton = ({ isReverseColors, content, rotateValue, isArrowLeftSide, onClick }) => {
+const ActionButton = ({
+  isReverseColors,
+  content,
+  rotateValue,
+  isArrowLeftSide,
+  onClick,
+  ariaLabel,
+  type,
+  disabledArrow,
+}) => {
   return (
     <Button
       isReverseColors={isReverseColors}
@@ -10,6 +19,9 @@ const ActionButton = ({ isReverseColors, content, rotateValue, isArrowLeftSide, 
       rotateValue={rotateValue}
       isArrowLeftSide={isArrowLeftSide}
       onClick={onClick}
+      ariaLabel={ariaLabel}
+      type={type}
+      disabledArrow={disabledArrow}
     >
       {content}
     </Button>
@@ -24,4 +36,7 @@ ActionButton.propTypes = {
   content: PropTypes.string,
   rotateValue: PropTypes.string,
   onClick: PropTypes.func,
+  ariaLabel: PropTypes.string,
+  type: PropTypes.string,
+  disabledArrow: PropTypes.bool,
 };

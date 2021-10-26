@@ -13,12 +13,20 @@ const Overlay = () => {
     <>
       {scrollPositionY !== 0 ? (
         <PositionWrapper position={{ top: 5 }}>
-          <ActionButton rotateValue="180" onClick={() => handleScrollNextPrev(-1)} />
+          <ActionButton
+            ariaLabel="Button scroll to previus section"
+            rotateValue="180"
+            onClick={() => handleScrollNextPrev(-1)}
+          />
         </PositionWrapper>
       ) : null}
       {scrollPositionY !== totalNumberOfViews ? (
         <PositionWrapper position={{ top: height / 10 - 4.8 }}>
-          <ActionButton rotateValue="0" onClick={() => handleScrollNextPrev(1)} />
+          <ActionButton
+            ariaLabel="Button scroll to next section"
+            rotateValue="0"
+            onClick={() => handleScrollNextPrev(1)}
+          />
         </PositionWrapper>
       ) : null}
     </>

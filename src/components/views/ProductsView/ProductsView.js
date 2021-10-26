@@ -1,29 +1,33 @@
 import React from 'react';
-import styled from 'styled-components';
-import ProductTesting from 'components/organisms/ProductTesting/ProductTesting';
-import { Wrapper } from './ProductsView.style';
-
-const ProductsList = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  height: fit-content;
-`;
+import ProductItem from 'components/organisms/ProductItem/ProductItem';
+import { products } from 'backend/cmsData';
+import { Wrapper, ProductsList } from './ProductsView.style';
 
 const ProductsView = () => {
+  const {
+    styles: { music, movies },
+  } = products;
   return (
     <Wrapper>
       <ProductsList>
-        <ProductTesting number="1" />
-        <ProductTesting number="2" />
-        <ProductTesting number="3" />
-        <ProductTesting number="4" />
+        {music.map((item) => (
+          <ProductItem
+            key={`music${item.name}`}
+            name={item.name}
+            img={item.img}
+            sizes={item.sizes}
+          />
+        ))}
       </ProductsList>
       <ProductsList>
-        <ProductTesting number="1" />
-        <ProductTesting number="2" />
-        <ProductTesting number="3" />
-        <ProductTesting number="4" />
+        {movies.map((item) => (
+          <ProductItem
+            key={`movies${item.name}`}
+            name={item.name}
+            img={item.img}
+            sizes={item.sizes}
+          />
+        ))}
       </ProductsList>
     </Wrapper>
   );

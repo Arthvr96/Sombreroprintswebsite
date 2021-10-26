@@ -6,12 +6,15 @@ export const Button = styled.button`
   position: relative;
   width: ${({ isContent }) => (isContent ? 'fit-content' : '2.1rem')};
   height: ${({ isContent }) => (isContent ? 'fit-content' : '2.1rem')};
-  padding: ${({ isContent, isArrowLeftSide }) => {
-    if (isContent) {
+  padding: ${({ isContent, isArrowLeftSide, disabledArrow }) => {
+    if (isContent && !disabledArrow) {
       if (isArrowLeftSide) {
         return '1.4rem 1.4rem 1.4rem 3.9rem';
       }
       return '1.4rem 3.9rem 1.4rem 1.4rem';
+    }
+    if (isContent && disabledArrow) {
+      return '0.7rem 1.4rem';
     }
     return '1.8rem';
   }};
@@ -28,7 +31,7 @@ export const Button = styled.button`
 
   &::before {
     content: '';
-    display: block;
+    display: ${({ disabledArrow }) => (disabledArrow ? 'none' : 'block')};
     width: 2.1rem;
     height: 2.1rem;
     position: absolute;

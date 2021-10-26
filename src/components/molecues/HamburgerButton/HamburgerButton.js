@@ -4,7 +4,7 @@ import { Button } from './HamburgerButton.styles';
 
 const HamburgerButton = ({ onClick, isOpen }) => {
   return (
-    <Button onClick={onClick} isOpen={isOpen}>
+    <Button onClick={onClick} isOpen={isOpen} aria-label="Hambrger menu button">
       <div>
         <span />
       </div>
