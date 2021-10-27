@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ScrollSection = styled.div`
-  position: relative;
+  position: fixed;
   z-index: ${({ zIndex }) => zIndex};
   display: flex;
   flex-direction: column;
@@ -10,4 +10,5 @@ export const ScrollSection = styled.div`
   transform: ${({ shiftValueX, shiftValueY }) => `translate(${shiftValueX}px, ${shiftValueY}px)`};
   transition: transform 0.3s ease-in;
   transition: ${({ slideTime }) => `transform ${slideTime}s ease-in`};
+  background-color: ${({ theme }) => theme.colors.primary};
 `;

@@ -9,7 +9,7 @@ const HamburgerMenu = ({ isOpen }) => {
   const { width } = useWindowSize();
 
   return (
-    <WrapperView isOpen={isOpen} width={width}>
+    <WrapperView isOpen={isOpen} sizeWidth={width}>
       <ViewTemplate>
         <WrapperContent>
           <NavList />

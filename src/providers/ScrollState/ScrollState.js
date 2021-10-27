@@ -20,7 +20,7 @@ const ScrollState = ({ children }) => {
   const [scrollPositionY, setScrollPositionY] = useState(0);
   const [scrollPositionX, setScrollPositionX] = useState(0);
   const [layerOneShiftValueY, setLayerOneShiftValueY] = useState(0);
-  const [layerTwoShiftValueY, setLayerTwoShiftValueY] = useState(-height);
+  const [layerTwoShiftValueY, setLayerTwoShiftValueY] = useState(0);
   const [shiftValueX, setShiftValueX] = useState(0);
 
   const updateScrollPositionY = (delta, DEADZONE) => {
@@ -85,7 +85,7 @@ const ScrollState = ({ children }) => {
       setLayerOneShiftValueY(-height);
     }
     if (scrollPositionY > 0) {
-      setLayerTwoShiftValueY(scrollPositionY * -height);
+      setLayerTwoShiftValueY((scrollPositionY - 1) * -height);
     }
   }, [scrollPositionY]);
 
