@@ -6,7 +6,8 @@ export const FieldForm = styled(Field)`
   padding: 0.7rem 0.3rem;
   font-size: ${({ theme }) => theme.fontSize.xs};
   text-align: center;
-  border: 1px solid ${({ theme, iserror }) => (iserror ? theme.colors.error : theme.colors.white)};
+  border: 1px solid
+    ${({ theme, iserror }) => (iserror === 'true' ? theme.colors.error : theme.colors.white)};
   border-radius: 25px;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.textPrimary};

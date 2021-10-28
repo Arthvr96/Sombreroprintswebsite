@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.li`
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
 export const ProductItemContent = styled.section`
   display: flex;
   flex-direction: column;

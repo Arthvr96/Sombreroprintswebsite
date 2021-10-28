@@ -23,10 +23,12 @@ const CustomPosterFormList = ({ setSelectedSize, sizes }) => {
     counter: 1,
   };
 
-  const onSubmit = (values) =>
+  const onSubmit = (values, { resetForm }) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
+      resetForm();
     }, 500);
+  };
 
   return (
     <Formik initialValues={initialValues} validationSchema={ValidateSchema} onSubmit={onSubmit}>
@@ -53,13 +55,13 @@ const CustomPosterFormList = ({ setSelectedSize, sizes }) => {
             type="text"
             name="artistName"
             placeholder="enter atrist name"
-            iserror={errors.artistName && touched.artistName}
+            iserror={errors.artistName && touched.artistName ? 'true' : 'false'}
           />
           <FieldForm
             type="text"
             name="albumName"
             placeholder="enter album name"
-            iserror={errors.albumName && touched.albumName}
+            iserror={errors.albumName && touched.albumName ? 'true' : 'false'}
           />
           <WrapperButtons>
             <CounterButtonForm
@@ -68,7 +70,13 @@ const CustomPosterFormList = ({ setSelectedSize, sizes }) => {
               values={values}
               setFieldValue={setFieldValue}
             />
-            <ActionButton type="submit" disabledArrow isReverseColors content="Add to cart" />
+            <ActionButton
+              type="submit"
+              disabled={isSubmitting}
+              disabledArrow
+              isReverseColors
+              content="Add to cart"
+            />
           </WrapperButtons>
         </StyledForm>
       )}

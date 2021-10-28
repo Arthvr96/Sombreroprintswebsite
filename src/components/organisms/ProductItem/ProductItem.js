@@ -1,40 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { sizes as mediaSizes } from 'helpers/media';
 import ViewTemplate from 'components/templates/ViewTemplate/ViewTemplate';
-import styled from 'styled-components';
 import CustomPosterFormList from '../CustomPosterFormList/CustomPosterFormList';
-import { ProductItemContent, Header, Poster, Price } from './ProductItem.style';
-
-const Wrapper = styled.li`
-  display: block;
-  width: fit-content;
-  height: fit-content;
-  background-color: ${({ theme }) => theme.colors.primary};
-`;
+import { ProductItemContent, Header, Poster, Price, Wrapper } from './ProductItem.style';
 
 const ProductItem = ({ name, img, sizes }) => {
   const { width } = useWindowSize();
   const [selectedSize, setSelectedSize] = useState('a5');
-
-  const handleRessize = (e) => {
-    // console.log(e);
-  };
-
-  useEffect(() => {
-    const inputs = document.querySelectorAll('input');
-
-    inputs.forEach((input) => {
-      input.addEventListener('focus', handleRessize);
-    });
-
-    return () => {
-      inputs.forEach((input) => {
-        input.removeEventListener('focus', handleRessize);
-      });
-    };
-  }, []);
 
   const getPrice = (size) => {
     let price;
