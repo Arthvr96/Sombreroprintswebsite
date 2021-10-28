@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import media from 'helpers/media';
+// import { media } from 'helpers/media';
 
 export const Wrapper = styled.section`
   display: flex;
@@ -9,8 +9,4 @@ export const Wrapper = styled.section`
   height: 100%;
   background: url(${({ bgMobile }) => bgMobile}) no-repeat center;
   background-size: cover;
-
-  ${media.desktop`
-  background: url(${({ bgDesktop }) => bgDesktop}) no-repeat center;
-  `}
 `;

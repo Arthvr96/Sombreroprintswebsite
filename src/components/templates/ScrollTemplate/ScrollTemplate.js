@@ -15,7 +15,8 @@ const DEADZONES = {
 
 const ScrollTemplate = ({ children }) => {
   const { isOpenHamburger } = useContext(GlobalStateContext);
-  const { updateScrollPositionY, updateScrollPositionX } = useContext(ScrollStateContext);
+  const { updateScrollPositionY, updateScrollPositionX, handleScrollToSection, scrollPositionY } =
+    useContext(ScrollStateContext);
   const deltaMobileScrollVertical = useMobileScrollVertical();
   const deltaMobileScrollHorizontal = useMobileScrollHorizontal();
   const deltaWheelScroll = useWheelScroll();
@@ -40,6 +41,18 @@ const ScrollTemplate = ({ children }) => {
       updateScrollPositionX(deltaMobileScrollHorizontal, DEADZONES.X_MOBILE);
     }
   }, [deltaMobileScrollHorizontal]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      handleScrollToSection(scrollPositionY);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>

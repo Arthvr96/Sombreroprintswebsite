@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import media from 'helpers/media';
 
 export const Wrapper = styled.li`
+  position: relative;
   display: block;
   width: fit-content;
   height: fit-content;
@@ -11,23 +13,38 @@ export const ProductItemContent = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: ${({ windowHeight }) => (windowHeight - 70) / 10}rem;
 `;
 
 export const Header = styled.h3`
-  font-size: ${({ theme }) => theme.fontSize.l};
+  position: absolute;
+  top: calc(2.5% + 4rem);
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.fontWeight.heavy};
   color: ${({ theme }) => theme.colors.textPrimary};
   text-transform: uppercase;
-  margin-top: 3rem;
+
+  ${media.mobile`
+  top: calc(5% + 4rem);
+  font-size: ${({ theme }) => theme.fontSize.l};
+  `}
 `;
 
 export const Poster = styled.img`
-  width: ${({ windowWidth }) => (windowWidth * 0.8) / 10}rem;
+  height: 55%;
+  ${media.mobile`
+    height: 50%;
+  `}
 `;
 
 export const Price = styled.h4`
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   color: ${({ theme }) => theme.colors.textPrimary};
   text-transform: uppercase;
+
+  ${media.mobile`
+    font-size: ${({ theme }) => theme.fontSize.s};
+  `}
 `;

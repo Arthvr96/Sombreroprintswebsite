@@ -7,7 +7,7 @@ import CustomPosterFormList from '../CustomPosterFormList/CustomPosterFormList';
 import { ProductItemContent, Header, Poster, Price, Wrapper } from './ProductItem.style';
 
 const ProductItem = ({ name, img, sizes }) => {
-  const { width } = useWindowSize();
+  const { width, height } = useWindowSize();
   const [selectedSize, setSelectedSize] = useState('a5');
 
   const getPrice = (size) => {
@@ -34,9 +34,9 @@ const ProductItem = ({ name, img, sizes }) => {
   return (
     <Wrapper>
       <ViewTemplate>
-        <ProductItemContent>
+        <ProductItemContent windowHeight={height}>
           <Header>{name}</Header>
-          <Poster src={getSizeOfImg()} windowWidth={width} alt="poster" />
+          <Poster src={getSizeOfImg()} windowHeight={height} alt="poster" />
           <Price>From {getPrice(selectedSize)}$</Price>
           <CustomPosterFormList setSelectedSize={setSelectedSize} sizes={sizes} />
         </ProductItemContent>

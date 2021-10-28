@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import arrowSvg from 'assets/arrow.svg';
 import arrowSvgBlack from 'assets/arrowBlack.svg';
+import media from 'helpers/media';
 
 export const Button = styled.button`
   position: relative;
-  width: ${({ isContent }) => (isContent ? 'fit-content' : '2.1rem')};
+  width: ${({ isContent }) => (isContent ? '45%' : '2.1rem')};
   height: ${({ isContent }) => (isContent ? 'fit-content' : '2.1rem')};
   padding: ${({ isContent, isArrowLeftSide, disabledArrow }) => {
     if (isContent && !disabledArrow) {
@@ -23,11 +24,16 @@ export const Button = styled.button`
   border: 1px solid
     ${({ isReverseColors, theme }) => (isReverseColors ? theme.colors.black : theme.colors.white)};
   border-radius: ${({ isContent }) => (isContent ? '25px' : '100%')};
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   color: ${({ theme, isReverseColors }) =>
     isReverseColors ? theme.colors.textSecondary : theme.colors.textPrimary};
   text-transform: uppercase;
+
+  ${media.mobile`
+  font-size: ${({ theme }) => theme.fontSize.s};
+  width: ${({ isContent }) => (isContent ? 'fit-content' : '2.1rem')};
+  `}
 
   &::before {
     content: '';
